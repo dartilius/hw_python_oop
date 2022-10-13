@@ -105,7 +105,8 @@ class SportsWalking(Training):
                    // self.height_sm)
                 * self.COEFF_CALORIE_2
                 * self.weight_kg)
-                * self.duration_h * 60
+                * self.duration_h
+                * self.MIN_IN_HOUR
                 )
 
 
