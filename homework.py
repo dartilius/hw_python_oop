@@ -25,6 +25,7 @@ class InfoMessage:
 
 class Training:
     """Базовый класс тренировки."""
+
     LEN_STEP = 0.65
     M_IN_KM = 1000
     MIN_IN_HOUR = 60
@@ -49,23 +50,23 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError("Метод get_spent_calories "
-                                  "в классе Training не определен")
+        raise NotImplementedError(f"Метод get_spent_calories в классе "
+                                  f"{type(self).__name__} не определен")
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        message = InfoMessage(
+        return InfoMessage(
             type(self).__name__,
             self.duration_h,
             self.get_distance(),
             self.get_mean_speed(),
             self.get_spent_calories()
         )
-        return message
 
 
 class Running(Training):
     """Тренировка: бег."""
+    
     COEFF_CALORIE_1 = 18
     COEFF_CALORIE_2 = 20
 
@@ -83,6 +84,7 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
+
     COEFF_CALORIE_1 = 0.035
     COEFF_CALORIE_2 = 0.029
 
@@ -98,7 +100,6 @@ class SportsWalking(Training):
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-
         return ((self.COEFF_CALORIE_1 * self.weight_kg
                 + (self.get_mean_speed()
                    ** 2
@@ -112,6 +113,7 @@ class SportsWalking(Training):
 
 class Swimming(Training):
     """Тренировка: плавание."""
+
     LEN_STEP = 1.38
     COEFF_CALORIE_1 = 1.1
     COEFF_CALORIE_2 = 2
@@ -160,7 +162,6 @@ def read_package(workout_type: str, data: list) -> Training:
 
 def main(training: Training) -> None:
     """Главная функция."""
-
     info = training.show_training_info()
     print(info.get_message())
 
