@@ -66,7 +66,6 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    
     COEFF_CALORIE_1 = 18
     COEFF_CALORIE_2 = 20
 
