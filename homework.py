@@ -29,8 +29,10 @@ class Training:
     LEN_STEP: float = 0.65
     M_IN_KM: int = 1000
     MIN_IN_H: int = 60
-    KMH_IN_MSEC: float = 0.278
     CM_IN_M: int = 100
+    KMH_IN_MSEC: float = 0.278
+# если сделать коэффициент 3.6 и вместо умножения делить,
+# то формула будет точнее.
 
     def __init__(
             self,
@@ -52,8 +54,7 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        print(f"Метод get_spent_calories в классе "
-              f"{type(self).__name__} не определен")
+        pass
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
